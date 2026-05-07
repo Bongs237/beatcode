@@ -39,7 +39,7 @@ INSPIRATIONAL_QUOTES = [
     "",
     '"You can\'t autotune your way out of an unsolved problem." ~ Llama, 3 a.m.',
     '"The DAW is locked, but your potential is uncapped."',
-    '"A bug in your solution is a bug in your soul." ~ DeepSeek, getting deep and seeking (wow)',
+    '"A bug in your solution is a bug in your soul." ~ DeepSeek, getting deep and seeking',
     '"Today\'s LeetCode is tomorrow\'s Grammy." ~ Drake, totally.',
     "'Your Spotify playlist is a queue. Data structures reference?!' ~ Me, in the car with friends, 2026",
 ]

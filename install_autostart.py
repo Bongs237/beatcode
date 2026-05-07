@@ -10,6 +10,22 @@ except ImportError:
     raise SystemExit(1) from None
 
 
+def _find_interpreter(root: Path) -> Path:
+    """Locate pythonw.exe, preferring the project's uv-managed .venv."""
+    venv_scripts = root / ".venv" / "Scripts"
+    for name in ("pythonw.exe", "python.exe"):
+        candidate = venv_scripts / name
+        if candidate.is_file():
+            return candidate
+
+    exe = Path(sys.executable)
+    if exe.name.lower() == "python.exe":
+        pyw = exe.with_name("pythonw.exe")
+        if pyw.is_file():
+            return pyw
+    return exe
+
+
 def main() -> None:
     root = Path(__file__).resolve().parent
     main_py = root / "main.py"
@@ -17,19 +33,26 @@ def main() -> None:
         print(f"Could not find main.py at {main_py}", file=sys.stderr)
         raise SystemExit(1)
 
+    venv_dir = root / ".venv"
+    if not venv_dir.is_dir():
+        print(
+            f"No .venv found at {venv_dir}.\n"
+            "Create it first with: uv sync  (or: uv venv && uv pip install -r requirements.txt)",
+            file=sys.stderr,
+        )
+        raise SystemExit(1)
+
     shell = win32com.client.Dispatch("WScript.Shell")
     startup_dir = Path(shell.SpecialFolders("Startup"))
     shortcut_path = startup_dir / "GoofyAhhGate.lnk"
 
-    exe = Path(sys.executable)
-    if exe.name.lower() == "python.exe":
-        target = exe.with_name("pythonw.exe")
-    else:
-        target = exe
-
-    if not target.is_file():
-        print(f"pythonw.exe not found next to {exe}; using {exe}", file=sys.stderr)
-        target = exe
+    target = _find_interpreter(root)
+    if target.name.lower() == "python.exe":
+        print(
+            f"Warning: using {target.name} (console window may flash). "
+            "Install pywin32 in the venv to get pythonw.exe.",
+            file=sys.stderr,
+        )
 
     sc = shell.CreateShortcut(str(shortcut_path))
     sc.TargetPath = str(target)
