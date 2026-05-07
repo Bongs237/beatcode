@@ -1,0 +1,14 @@
+[project]
+name = "goofyahh"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "pillow>=12.2.0",
+    "psutil>=7.2.2",
+    "pystray>=0.19.5",
+    "python-dotenv>=1.2.2",
+    "pywin32>=311",
+    "requests>=2.33.1",
+]
