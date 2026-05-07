@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import random
 import threading
 import time
 import tkinter as tk
@@ -12,6 +13,27 @@ _DEBOUNCE_SECONDS = 3.0
 
 LEETCODE_PROBLEMSET = "https://leetcode.com/problemset/"
 
+INSPIRATIONAL_QUOTES = [
+    # Real-ish quotes
+    '"Talk is cheap. Show me the code." — Linus Torvalds',
+    '"Premature optimization is the root of all evil." — Donald Knuth',
+    '"Do or do not. There is no try." — Yoda',
+    '"Discipline equals freedom." — Jocko Willink',
+    '"It always seems impossible until it\'s done." — Nelson Mandela',
+    '"Whether you think you can, or you think you can\'t — you\'re right." — Henry Ford',
+    '"Hard work beats talent when talent doesn\'t work hard." — Tim Notke',
+    '"The expert in anything was once a beginner."',
+    # Certified AI-generated slop
+    '"Every accepted submission is a beat you haven\'t dropped yet." — ChatGPT, probably',
+    '"Two pointers in your code, two hands on your MIDI keys." — GPT-4o, after midnight',
+    '"Recursion is just self-belief calling itself." — Claude, allegedly',
+    '"Sleep is just garbage collection for the soul." — an LLM with too much RAM',
+    '"Big O of grinding is O(1) — constant, no excuses." — Gemini, hallucinating',
+    '"You can\'t autotune your way out of an unsolved problem." — Llama, 3 a.m.',
+    '"The DAW is locked, but your potential is uncapped."',
+    '"A bug in your solution is a bug in your soul." — DeepSeek, getting deep and seeking (wow)',
+    '"Today\'s LeetCode is tomorrow\'s Grammy." — definitely not Drake',
+]
 
 def show_lockin_dialog(solved: int, required: int) -> None:
     global _LAST_SHOWN_MONO
@@ -31,8 +53,8 @@ def show_lockin_dialog(solved: int, required: int) -> None:
         top.attributes("-topmost", True)
 
         msg = (
-            f"You've solved {solved}/{required} LeetCode problems today.\n"
-            "Nah bruh, don't even try."
+            f"You've solved {solved}/{required} LeetCode problems today.\n\n"
+            + random.choice(INSPIRATIONAL_QUOTES)
         )
         frame = ttk.Frame(top, padding=16)
         frame.pack(fill=tk.BOTH, expand=True)
