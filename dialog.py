@@ -15,24 +15,33 @@ LEETCODE_PROBLEMSET = "https://leetcode.com/problemset/"
 
 INSPIRATIONAL_QUOTES = [
     # Real-ish quotes
-    '"Talk is cheap. Show me the code." — Linus Torvalds',
-    '"Premature optimization is the root of all evil." — Donald Knuth',
-    '"Do or do not. There is no try." — Yoda',
-    '"Discipline equals freedom." — Jocko Willink',
-    '"It always seems impossible until it\'s done." — Nelson Mandela',
-    '"Whether you think you can, or you think you can\'t — you\'re right." — Henry Ford',
-    '"Hard work beats talent when talent doesn\'t work hard." — Tim Notke',
+    '"Talk is cheap. Show me the code." ~ Linus Torvalds',
+    '"Premature optimization is the root of all evil." ~ Donald Knuth',
+    '"Do or do not. There is no try." ~ Yoda',
+    '"Discipline equals freedom." ~ Jocko Willink',
+    '"It always seems impossible until it\'s done." ~ Nelson Mandela',
+    '"Whether you think you can, or you think you can\'t ~ you\'re right." ~ Henry Ford',
+    '"Hard work beats talent when talent doesn\'t work hard." ~ Tim Notke',
     '"The expert in anything was once a beginner."',
+    '"The greatest glory in living lies not in never falling, but in rising every time we fall." ~ Nelson Mandela',
+    '"Do the best you can until you know better. Then when you know better, do better." ~ Maya Angelou',
+    '"The struggle you\'re in today is developing the strength you need tomorrow." ~ Anonymous',
+    '"Be not afraid of growing slowly; be afraid only of standing still." ~ Chinese Proverb',
+    '"Never gonna give you up, never gonna let you down, never gonna run around and desert you." ~ Rick Astley',
+    '"Embrace a growth mindset" ~ my 22c professor',
+
     # Certified AI-generated slop
-    '"Every accepted submission is a beat you haven\'t dropped yet." — ChatGPT, probably',
-    '"Two pointers in your code, two hands on your MIDI keys." — GPT-4o, after midnight',
-    '"Recursion is just self-belief calling itself." — Claude, allegedly',
-    '"Sleep is just garbage collection for the soul." — an LLM with too much RAM',
-    '"Big O of grinding is O(1) — constant, no excuses." — Gemini, hallucinating',
-    '"You can\'t autotune your way out of an unsolved problem." — Llama, 3 a.m.',
+    '"Every accepted submission is a beat you haven\'t dropped yet." ~ ChatGPT, probably',
+    '"Two pointers in your code, two hands on your MIDI keys." ~ GPT-4o, after midnight',
+    '"Recursion is just self-belief calling itself." ~ Claude, allegedly',
+    '"Sleep is just garbage collection for the soul." ~ an LLM with too much RAM',
+    '"Microwave burrito that\'s O(1), checking my phone, that\'s O(1), grinding LeetCode? That NEEDS TO BE O(1). ~ Me, 12 am',
+    "",
+    '"You can\'t autotune your way out of an unsolved problem." ~ Llama, 3 a.m.',
     '"The DAW is locked, but your potential is uncapped."',
-    '"A bug in your solution is a bug in your soul." — DeepSeek, getting deep and seeking (wow)',
-    '"Today\'s LeetCode is tomorrow\'s Grammy." — definitely not Drake',
+    '"A bug in your solution is a bug in your soul." ~ DeepSeek, getting deep and seeking (wow)',
+    '"Today\'s LeetCode is tomorrow\'s Grammy." ~ Drake, totally.',
+    "'Your Spotify playlist is a queue. Data structures reference?!' ~ Me, in the car with friends, 2026",
 ]
 
 def show_lockin_dialog(solved: int, required: int) -> None:
@@ -86,7 +95,6 @@ def show_lockin_dialog(solved: int, required: int) -> None:
         top.geometry(f"{w}x{h}+{x}+{y}")
         top.grab_set()
 
-        root.deiconify()
         root.mainloop()
 
     threading.Thread(target=_run, daemon=True).start()
