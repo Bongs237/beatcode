@@ -1,14 +1,16 @@
 # BEATCODE
 
-Have you ever wanted to write music
+Have you ever wanted to make music
+
 BUT
+
 you're actually a CS major
-and you need to do leetcode
+and you need to do leetcode?
 
 THIS IS FOR YOUUUUU
 
 Basically, this is an app that locks a specific executable (e.g. your DAW) until you have solved enough LeetCode problems today.
-Only Windows is supported right now.
+**NOTE: Only Windows is supported right now.**
 
 ## Setup (thank you claude for writing this I am so lazy ong)
 
@@ -24,7 +26,7 @@ Requires [uv](https://docs.astral.sh/uv/) and Windows. Dependencies are declared
    - `LEETCODE_USERNAME` — your LeetCode username (public profile).
    - `MIN_PROBLEMS_PER_DAY` — quota (e.g. `1`).
    - `PROCESSES` — comma-separated process **names** as shown in Task Manager (e.g. `Ableton Live 12 Suite.exe`).
-   - `FAIL_OPEN_ON_API_ERROR` — `true` = if LeetCode is unreachable, allow the DAW and show a tray notification (recommended).
+   - `FAIL_OPEN_ON_API_ERROR` — `true` = if LeetCode is unreachable, allow the program and show a tray notification (recommended).
 
 ## Run
 
@@ -45,20 +47,6 @@ uv run python install_autostart.py
 Creates `%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\BEATCODE.lnk`. **To uninstall**, delete that `.lnk` file.
 
 > The shortcut points at the `pythonw.exe` inside `.venv` (resolved via `sys.executable`), so `uv` is not required at login — just don’t move/delete the project’s `.venv`. If you ever recreate the venv, re-run `install_autostart.py`.
-
-## Tray menu
-
-- Status line (solved / quota).
-- **Refresh now** — clears the LeetCode cache and re-fetches.
-- **Open LeetCode** — problem set in the browser.
-- **Quit**.
-
-## Manual smoke test
-
-1. In `.env`, set `MIN_PROBLEMS_PER_DAY=999` and `PROCESSES=notepad.exe`. Save.
-2. Run `uv run python main.py`. Open **Notepad**.
-3. Confirm Notepad is terminated and the **Lock in.** dialog appears (may take up to `POLL_INTERVAL_SECONDS`).
-4. Set `MIN_PROBLEMS_PER_DAY=0`. Restart the app. Open Notepad — it should stay open.
 
 ## Notes
 

@@ -12,15 +12,18 @@ except ImportError:
 
 def _find_interpreter(root: Path) -> Path:
     """Locate pythonw.exe, preferring the project's uv-managed .venv."""
+
+    # Prefer pythonw.exe then python.exe
+    # Look for pythonw or python in venv
     venv_scripts = root / ".venv" / "Scripts"
     for name in ("pythonw.exe", "python.exe"):
         candidate = venv_scripts / name
         if candidate.is_file():
             return candidate
 
-    exe = Path(sys.executable)
+    exe = Path(sys.executable) # Python interpreter that is running this script
     if exe.name.lower() == "python.exe":
-        pyw = exe.with_name("pythonw.exe")
+        pyw = exe.with_name("pythonw.exe") # Same path, just with a different filename
         if pyw.is_file():
             return pyw
     return exe
@@ -37,7 +40,7 @@ def main() -> None:
     if not venv_dir.is_dir():
         print(
             f"No .venv found at {venv_dir}.\n"
-            "Create it first with: uv sync  (or: uv venv && uv pip install -r requirements.txt)",
+            "Create it first with: uv sync (or: uv venv)",
             file=sys.stderr,
         )
         raise SystemExit(1)
@@ -49,7 +52,7 @@ def main() -> None:
     target = _find_interpreter(root)
     if target.name.lower() == "python.exe":
         print(
-            f"Warning: using {target.name} (console window may flash). "
+            f"Warning: using {target.name} (console window may flash)."
             "Install pywin32 in the venv to get pythonw.exe.",
             file=sys.stderr,
         )
@@ -62,7 +65,7 @@ def main() -> None:
     sc.Save()
 
     print(f"Created startup shortcut:\n  {shortcut_path}")
-    print("To uninstall, delete that .lnk file.")
+    print("To uninstall, delete the .lnk file.")
 
 
 if __name__ == "__main__":
