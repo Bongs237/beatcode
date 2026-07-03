@@ -1,4 +1,11 @@
-# GoofyAhhGate (LeetCode before DAW)
+# BEATCODE
+
+Have you ever wanted to write music
+BUT
+you're actually a CS major
+and you need to do leetcode
+
+THIS IS FOR YOUUUUU
 
 Minimal Windows tray app: **block configured executables (e.g. your DAW)** until you have solved enough LeetCode problems **today** (checked via LeetCode’s public GraphQL `recentAcSubmissionList`).
 
@@ -34,7 +41,7 @@ uv run pythonw main.py
 uv run python install_autostart.py
 ```
 
-Creates `%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\GoofyAhhGate.lnk`. **To uninstall**, delete that `.lnk` file.
+Creates `%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\BEATCODE.lnk`. **To uninstall**, delete that `.lnk` file.
 
 > The shortcut points at the `pythonw.exe` inside `.venv` (resolved via `sys.executable`), so `uv` is not required at login — just don’t move/delete the project’s `.venv`. If you ever recreate the venv, re-run `install_autostart.py`.
 

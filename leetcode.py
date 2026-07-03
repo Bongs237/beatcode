@@ -30,7 +30,7 @@ class LeetCodeClient:
         self._session.headers.update(
             {
                 "Content-Type": "application/json",
-                "User-Agent": "GoofyAhhGate/1.0 (personal monitoring; +https://leetcode.com)",
+                "User-Agent": "BEATCODE/1.0 (personal monitoring; +https://leetcode.com)",
                 "Referer": "https://leetcode.com/",
             }
         )

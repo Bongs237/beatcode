@@ -44,7 +44,7 @@ def main() -> None:
 
     shell = win32com.client.Dispatch("WScript.Shell")
     startup_dir = Path(shell.SpecialFolders("Startup"))
-    shortcut_path = startup_dir / "GoofyAhhGate.lnk"
+    shortcut_path = startup_dir / "BEATCODE.lnk"
 
     target = _find_interpreter(root)
     if target.name.lower() == "python.exe":

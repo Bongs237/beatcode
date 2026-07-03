@@ -3,6 +3,29 @@ revision = 3
 requires-python = ">=3.14"
 
 [[package]]
+name = "beatcode"
+version = "0.1.0"
+source = { virtual = "." }
+dependencies = [
+    { name = "pillow" },
+    { name = "psutil" },
+    { name = "pystray" },
+    { name = "python-dotenv" },
+    { name = "pywin32" },
+    { name = "requests" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "pillow", specifier = ">=12.2.0" },
+    { name = "psutil", specifier = ">=7.2.2" },
+    { name = "pystray", specifier = ">=0.19.5" },
+    { name = "python-dotenv", specifier = ">=1.2.2" },
+    { name = "pywin32", specifier = ">=311" },
+    { name = "requests", specifier = ">=2.33.1" },
+]
+
+[[package]]
 name = "certifi"
 version = "2026.4.22"
 source = { registry = "https://pypi.org/simple" }
@@ -50,29 +73,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/7a/1d/29d32e0fb40864b1f878c7f5a0b343ae676c6e2b271a2d55cc3a152391da/charset_normalizer-3.4.7-cp314-cp314t-win_amd64.whl", hash = "sha256:03853ed82eeebbce3c2abfdbc98c96dc205f32a79627688ac9a27370ea61a49c", size = 174168, upload-time = "2026-04-02T09:27:49.795Z" },
     { url = "https://files.pythonhosted.org/packages/de/32/d92444ad05c7a6e41fb2036749777c163baf7a0301a040cb672d6b2b1ae9/charset_normalizer-3.4.7-cp314-cp314t-win_arm64.whl", hash = "sha256:c35abb8bfff0185efac5878da64c45dafd2b37fb0383add1be155a763c1f083d", size = 153018, upload-time = "2026-04-02T09:27:51.116Z" },
     { url = "https://files.pythonhosted.org/packages/db/8f/61959034484a4a7c527811f4721e75d02d653a35afb0b6054474d8185d4c/charset_normalizer-3.4.7-py3-none-any.whl", hash = "sha256:3dce51d0f5e7951f8bb4900c257dad282f49190fdbebecd4ba99bcc41fef404d", size = 61958, upload-time = "2026-04-02T09:28:37.794Z" },
-]
-
-[[package]]
-name = "goofyahh"
-version = "0.1.0"
-source = { virtual = "." }
-dependencies = [
-    { name = "pillow" },
-    { name = "psutil" },
-    { name = "pystray" },
-    { name = "python-dotenv" },
-    { name = "pywin32" },
-    { name = "requests" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "pillow", specifier = ">=12.2.0" },
-    { name = "psutil", specifier = ">=7.2.2" },
-    { name = "pystray", specifier = ">=0.19.5" },
-    { name = "python-dotenv", specifier = ">=1.2.2" },
-    { name = "pywin32", specifier = ">=311" },
-    { name = "requests", specifier = ">=2.33.1" },
 ]
 
 [[package]]

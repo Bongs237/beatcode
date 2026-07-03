@@ -69,8 +69,8 @@ def main() -> None:
             last_api_notify = now
         try:
             ico.notify(
-                "GoofyAhhGate",
-                "LeetCode unreachable — DAW allowed (fail-open).",
+                "BEATCODE",
+                "LeetCode unreachable. DAW allowed (you got lucky this time).",
             )
         except Exception:
             pass
@@ -99,9 +99,9 @@ def main() -> None:
     )
 
     icon = pystray.Icon(
-        "GoofyAhhGate",
+        "BEATCODE",
         _make_icon_image(),
-        "GoofyAhhGate — LeetCode before DAW",
+        "BEATCODE",
         menu,
     )
     icon_holder["icon"] = icon
