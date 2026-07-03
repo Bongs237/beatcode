@@ -38,6 +38,7 @@ class Config:
     poll_interval_seconds: int
     cache_ttl_seconds: int
     fail_open_on_api_error: bool
+    quotes: list[str]
 
 
 def load(env_path: str = ".env") -> Config:
@@ -55,6 +56,10 @@ def load(env_path: str = ".env") -> Config:
     if not processes:
         raise ValueError("PROCESSES parsed to an empty list; check comma-separated values")
 
+    quotes = os.getenv("QUOTES", "").split("\n")
+    if not quotes:
+        raise ValueError("QUOTES must be set in .env (newline-separated list)")
+
     return Config(
         leetcode_username=leetcode_username,
         min_problems_per_day=_parse_int(
@@ -70,4 +75,5 @@ def load(env_path: str = ".env") -> Config:
         fail_open_on_api_error=_parse_bool(
             "FAIL_OPEN_ON_API_ERROR", os.getenv("FAIL_OPEN_ON_API_ERROR"), default=True
         ),
+        quotes=quotes,
     )

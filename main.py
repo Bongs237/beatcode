@@ -11,6 +11,9 @@ import pystray
 from PIL import Image, ImageDraw, ImageFont
 
 import config as cfg_mod
+
+from banner import print_banner
+
 from leetcode import LeetCodeClient
 from monitor import current_status_label, monitor_loop
 
@@ -44,6 +47,7 @@ def _make_icon_image() -> Image.Image:
 
 
 def main() -> None:
+    print_banner()
     try:
         cfg = cfg_mod.load()
     except ValueError as e:

@@ -1,4 +1,4 @@
-# BEATCODE: LeetCode first, distraction second
+# BEATCODE: LeetCode first, distractions second
 
 This program blocks a specific app or apps until you have solved a certain number of LeetCode problems today so you can **LOCK IN**.
 
@@ -10,7 +10,8 @@ This was originally designed as a very niche, personal, specific thing for me. A
 
 big shoutout to claude for writing this (I am extremely lazy)
 
-### ⚠️ NOTE: Only Windows is currently supported. If you're not on Windows... sorry bout that 😭
+### ⚠️ NOTE: Only Windows is currently supported (FOR NOW)
+If you're not on Windows... sorry bout that 😭
 
 1. Download and install [uv](https://docs.astral.sh/uv/#installation).
 

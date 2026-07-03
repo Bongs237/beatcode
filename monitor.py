@@ -50,7 +50,7 @@ def monitor_loop(
                     except (psutil.NoSuchProcess, psutil.AccessDenied):
                         pass
                 if killed_any:
-                    show_lockin_dialog(effective, cfg.min_problems_per_day)
+                    show_lockin_dialog(effective, cfg.min_problems_per_day, cfg.quotes)
 
         if stop.wait(cfg.poll_interval_seconds):
             break
