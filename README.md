@@ -7,9 +7,10 @@ and you need to do leetcode
 
 THIS IS FOR YOUUUUU
 
-Minimal Windows tray app: **block configured executables (e.g. your DAW)** until you have solved enough LeetCode problems **today** (checked via LeetCode’s public GraphQL `recentAcSubmissionList`).
+Basically, this is an app that locks a specific executable (e.g. your DAW) until you have solved enough LeetCode problems today.
+Only Windows is supported right now.
 
-## Setup
+## Setup (thank you claude for writing this I am so lazy ong)
 
 Requires [uv](https://docs.astral.sh/uv/) and Windows. Dependencies are declared in [`pyproject.toml`](pyproject.toml).
 
