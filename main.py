@@ -70,7 +70,7 @@ def main() -> None:
         try:
             ico.notify(
                 "BEATCODE",
-                "LeetCode unreachable. DAW allowed (you got lucky this time).",
+                "LeetCode unreachable. Distractions allowed (you lucked out this time).",
             )
         except Exception:
             pass

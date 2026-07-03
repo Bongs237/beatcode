@@ -40,7 +40,7 @@ def main() -> None:
     if not venv_dir.is_dir():
         print(
             f"No .venv found at {venv_dir}.\n"
-            "Create it first with: uv sync (or: uv venv)",
+            "Create it first with: uv sync",
             file=sys.stderr,
         )
         raise SystemExit(1)
