@@ -13,6 +13,62 @@ _DEBOUNCE_SECONDS = 3.0
 
 LEETCODE_PROBLEMSET = "https://leetcode.com/problemset/"
 
+def confirm_quit() -> bool:
+    """Blocking 'are you SUPER DUPER sure' dialog. Returns True if the user confirms quitting."""
+    confirmed = False
+
+    root = tk.Tk()
+    root.withdraw()
+
+    top = tk.Toplevel(root)
+    top.title("Wait a sec...")
+    top.resizable(False, False)
+    top.attributes("-topmost", True)
+
+    msg = (
+        "Are you SUPER DUPER sure you wanna quit?\n\n"
+        "Your distractions will be wide open and your LeetCode grind\n"
+        "goes completely unguarded. No takesies-backsies."
+    )
+    frame = ttk.Frame(top, padding=16)
+    frame.pack(fill=tk.BOTH, expand=True)
+    ttk.Label(frame, text=msg, justify=tk.CENTER).pack(pady=(0, 12))
+
+    btn_row = ttk.Frame(frame)
+    btn_row.pack()
+
+    def shutdown() -> None:
+        top.destroy()
+        root.destroy()
+
+    def keep_grinding() -> None:
+        nonlocal confirmed
+        confirmed = False
+        shutdown()
+
+    def do_quit() -> None:
+        nonlocal confirmed
+        confirmed = True
+        shutdown()
+
+    keep_btn = ttk.Button(btn_row, text="No, keep grinding", command=keep_grinding)
+    keep_btn.pack(side=tk.LEFT, padx=4)
+    ttk.Button(btn_row, text="Yeah, quit", command=do_quit).pack(side=tk.LEFT, padx=4)
+
+    keep_btn.focus_set()
+
+    top.update_idletasks()
+    w = max(top.winfo_reqwidth(), 380)
+    h = top.winfo_reqheight()
+    x = (top.winfo_screenwidth() - w) // 2
+    y = (top.winfo_screenheight() - h) // 2
+    top.geometry(f"{w}x{h}+{x}+{y}")
+    top.grab_set()
+
+    root.mainloop()
+    return confirmed
+
+
 def show_lockin_dialog(solved: int, required: int, quotes: list[str]) -> None:
     global _LAST_SHOWN_MONO
     now = time.monotonic()

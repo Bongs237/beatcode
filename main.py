@@ -14,6 +14,7 @@ import config as cfg_mod
 
 from banner import print_banner
 
+from dialog import confirm_quit
 from leetcode import LeetCodeClient
 from monitor import current_status_label, monitor_loop
 
@@ -66,6 +67,8 @@ def main() -> None:
         webbrowser.open(LEETCODE_PROBLEMSET)
 
     def on_quit(icon: pystray.Icon, _item: pystray.MenuItem) -> None:
+        if not confirm_quit():
+            return
         stop.set()
         icon.stop()
 
