@@ -67,10 +67,16 @@ def main() -> None:
         webbrowser.open(LEETCODE_PROBLEMSET)
 
     def on_quit(icon: pystray.Icon, _item: pystray.MenuItem) -> None:
-        if not confirm_quit():
-            return
-        stop.set()
-        icon.stop()
+        # Run the confirm dialog on its own thread. If we called mainloop()
+        # directly here, it would run nested inside pystray's Win32 window
+        # procedure and the dialog would never get input focus (unclickable).
+        def worker() -> None:
+            if not confirm_quit():
+                return
+            stop.set()
+            icon.stop()
+
+        threading.Thread(target=worker, daemon=True).start()
 
     menu = pystray.Menu(
         pystray.MenuItem(status_text, None, enabled=False),

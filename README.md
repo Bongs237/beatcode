@@ -20,7 +20,8 @@ If you're not on Windows... sorry bout that 😭
 uv sync
 ```
 
-#### 3. Copy [`.env.example`](.env.example) to `.env`
+#### 3. Edit configuration
+Copy [`.env.example`](.env.example) to `.env`.
 ```bash
 copy .env.example .env
 ```

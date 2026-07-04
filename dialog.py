@@ -8,8 +8,8 @@ import webbrowser
 from tkinter import ttk
 
 _DEBOUNCE_LOCK = threading.Lock()
-_LAST_SHOWN_MONO = 0.0
-_DEBOUNCE_SECONDS = 3.0
+_LAST_SHOWN_MONO = 0.0 # Time in seconds since the last time the dialog was shown
+_DEBOUNCE_SECONDS = 3.0 # Time in seconds to debounce the dialog
 
 LEETCODE_PROBLEMSET = "https://leetcode.com/problemset/"
 
@@ -41,21 +41,18 @@ def confirm_quit() -> bool:
         top.destroy()
         root.destroy()
 
-    def keep_grinding() -> None:
-        nonlocal confirmed
-        confirmed = False
-        shutdown()
-
     def do_quit() -> None:
         nonlocal confirmed
         confirmed = True
         shutdown()
 
-    keep_btn = ttk.Button(btn_row, text="No, keep grinding", command=keep_grinding)
+    keep_btn = ttk.Button(btn_row, text="No, keep grinding", command=shutdown)
     keep_btn.pack(side=tk.LEFT, padx=4)
     ttk.Button(btn_row, text="Yeah, quit", command=do_quit).pack(side=tk.LEFT, padx=4)
 
-    keep_btn.focus_set()
+    top.protocol("WM_DELETE_WINDOW", shutdown)
+
+    top.focus()
 
     top.update_idletasks()
     w = max(top.winfo_reqwidth(), 380)
