@@ -40,6 +40,7 @@ def print_banner() -> None:
         for (r, g, b), row in zip(BANNER_GRADIENT, BANNER_LINES):
             print(f"\x1b[38;2;{r};{g};{b}m{row}{reset}")
         print(f"{dim}// LeetCode first, distractions second{reset}")
+        print("running!")
         print()
     except Exception:
         pass

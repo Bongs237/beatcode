@@ -8,7 +8,7 @@ import webbrowser
 from pathlib import Path
 
 import pystray
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image
 
 import config as cfg_mod
 
@@ -20,30 +20,6 @@ from monitor import current_status_label, monitor_loop
 LEETCODE_PROBLEMSET = "https://leetcode.com/problemset/"
 MENU_REFRESH_SECONDS = 30
 API_ERROR_NOTIFY_COOLDOWN = 120.0
-
-
-def _make_icon_image() -> Image.Image:
-    size = 64
-    img = Image.new("RGB", (size, size), color=(26, 26, 32))
-    draw = ImageDraw.Draw(img)
-    draw.rounded_rectangle(
-        [6, 6, size - 6, size - 6], radius=8, outline=(220, 220, 230), width=3
-    )
-    try:
-        font = ImageFont.truetype("segoeui.ttf", 36)
-    except OSError:
-        font = ImageFont.load_default()
-    text = "L"
-    bbox = draw.textbbox((0, 0), text, font=font)
-    tw = bbox[2] - bbox[0]
-    th = bbox[3] - bbox[1]
-    draw.text(
-        ((size - tw) // 2, (size - th) // 2 - 2),
-        text,
-        fill=(245, 245, 250),
-        font=font,
-    )
-    return img
 
 
 def main() -> None:
@@ -104,7 +80,7 @@ def main() -> None:
 
     icon = pystray.Icon(
         "BEATCODE",
-        _make_icon_image(),
+        Image.open("logo.png"),
         "BEATCODE",
         menu,
     )
