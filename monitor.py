@@ -14,10 +14,10 @@ def current_status_label(cfg: Config, lc: LeetCodeClient) -> str:
     n = cfg.min_problems_per_day
     solved = lc.solved_today_count()
     if solved is None:
-        return f"?/{n} — api error"
+        return f"?/{n} - api error"
     if solved >= n:
         return f"{solved}/{n} solved today"
-    return f"{solved}/{n} — locked"
+    return f"{solved}/{n} - locked"
 
 
 def monitor_loop(

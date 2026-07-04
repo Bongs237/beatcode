@@ -22,10 +22,10 @@ If you're not on Windows... sorry bout that 😭
    ```
 
 3. Copy [`.env.example`](.env.example) to `.env` and edit:
-   - `LEETCODE_USERNAME` — your LeetCode username (public profile).
-   - `MIN_PROBLEMS_PER_DAY` — quota (e.g. `1`).
-   - `PROCESSES` — **The distracting processes you want to block.** Comma-separated process names as shown in Task Manager (e.g. `notepad.exe`, `WhatsApp.Root.exe`). This will scan for the process by name and _YEET IT_
-   - `FAIL_OPEN_ON_API_ERROR` — `true` = if LeetCode is unreachable, allow the processes, and show a tray notification (recommended).
+   - `LEETCODE_USERNAME` - your LeetCode username (public profile).
+   - `MIN_PROBLEMS_PER_DAY` - quota (e.g. `1`).
+   - `PROCESSES` - **The distracting processes you want to block.** Comma-separated process names as shown in Task Manager (e.g. `notepad.exe`, `WhatsApp.Root.exe`). This will scan for the process by name and _YEET IT_
+   - `FAIL_OPEN_ON_API_ERROR` - `true` = if LeetCode is unreachable, allow the processes, and show a tray notification (recommended).
 
 4. **RUN IT!**
 ```powershell
