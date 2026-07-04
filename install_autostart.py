@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import subprocess
 import sys
 from pathlib import Path
 
@@ -65,8 +66,13 @@ def main() -> None:
     sc.Save()
 
     print(f"Created startup shortcut:\n  {shortcut_path}")
-    print("To uninstall, delete the .lnk file.")
+    print("To uninstall, delete the .lnk file.\n")
 
+    print("Starting BEATCODE...")
+    # run the script and get the heck out of here
+    subprocess.Popen([str(target), str(main_py)])
+
+    print("BEATCODE started! Check your tray :)")
 
 if __name__ == "__main__":
     main()

@@ -13,36 +13,44 @@ big shoutout to claude for writing this (I am extremely lazy)
 ### ⚠️ NOTE: Only Windows is currently supported (FOR NOW)
 If you're not on Windows... sorry bout that 😭
 
-1. Download and install [uv](https://docs.astral.sh/uv/#installation).
+#### 1. Download and install [uv](https://docs.astral.sh/uv/#installation).
 
-2. Sync the environment (creates `.venv` and installs everything):
-
-   ```powershell
-   uv sync
-   ```
-
-3. Copy [`.env.example`](.env.example) to `.env` and edit:
-   - `LEETCODE_USERNAME` - your LeetCode username (public profile).
-   - `MIN_PROBLEMS_PER_DAY` - quota (e.g. `1`).
-   - `PROCESSES` - **The distracting processes you want to block.** Comma-separated process names as shown in Task Manager (e.g. `notepad.exe`, `WhatsApp.Root.exe`). This will scan for the process by name and _YEET IT_
-   - `FAIL_OPEN_ON_API_ERROR` - `true` or `false` = if LeetCode is unreachable, allow the processes, and show a tray notification (recommended).
-
-4. **RUN IT!**
-```powershell
-uv run pythonw main.py
+#### 2. Sync the environment (creates `.venv`):
+```bash
+uv sync
 ```
-(`pythonw` avoids an extra console window; `uv run python main.py` also works for debugging.)
 
-## Autostart
+#### 3. Copy [`.env.example`](.env.example) to `.env`
+```bash
+copy .env.example .env
+```
 
-```powershell
+Edit:
+- `LEETCODE_USERNAME` - your LeetCode username (public profile).
+- `MIN_PROBLEMS_PER_DAY` - quota (e.g. `1`).
+- `PROCESSES` - **The distracting processes you want to block.** Comma-separated process names as shown in Task Manager (e.g. `notepad.exe`, `WhatsApp.Root.exe`). This will scan for the process by name and _YEET IT_
+- `FAIL_OPEN_ON_API_ERROR` - `true` or `false` = if LeetCode is unreachable, allow the processes, and show a tray notification (recommended).
+
+#### 4. RUN IT!
+```bash
 uv run python install_autostart.py
 ```
-This creates a shortcut in your Windows Startup directory. Whenever your computer restarts, it will automatically run this program.
+This creates a shortcut in your Windows Startup directory, and starts up the program! Whenever your computer restarts, it will automatically run this program.
 
 **To uninstall**, delete the `.lnk` file.
 
-> The shortcut points at the `pythonw.exe` inside `.venv` (resolved via `sys.executable`), so `uv` is not required at login. Just don’t move/delete the project’s `.venv`. If you ever recreate the venv, re-run `install_autostart.py`.
+> The shortcut points at the `pythonw.exe` inside `.venv`. Just don’t move/delete the project’s `.venv`. If you ever recreate the venv, re-run `install_autostart.py`.
+
+## For development
+
+When developing or debugging, you'll want to see print statements, errors, and logs in the console.
+
+For development, run the app like this:
+```bash
+uv run python main.py
+```
+
+This runs the main program using the standard Python interpreter (not `pythonw`), so any output (including debug or error messages) appears in your terminal.
 
 ## Notes
 
